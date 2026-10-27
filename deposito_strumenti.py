@@ -18,7 +18,7 @@ class DepositoStrumenti:
         self.responsabile = nuovo_responsabile
 
     def carica_file_strumenti(self, file_path):
-        """Carica gli strumenti dal file. Se il file non esiste, FileNotFoundError si propaga al chiamante."""
+
         with open(file_path, "r", encoding="utf-8") as f:
             righe = f.readlines()
 
@@ -38,7 +38,7 @@ class DepositoStrumenti:
             self.strumenti.append(strumento)
 
     def aggiungi_strumento(self, tipo, marca, anno_acquisto, valore):
-        """Aggiunge uno strumento nel deposito: aggiunge solo nel sistema e non aggiorna il file"""
+
         if len(self.strumenti) == 0:
             nuovo_numero = 1
         else:
@@ -54,7 +54,7 @@ class DepositoStrumenti:
         return strumento
 
     def strumenti_ordinati_per_marca(self):
-        """Ordina gli strumenti per marca in ordine alfabetico"""
+
         return sorted(self.strumenti, key=lambda strumento: strumento.marca)
 
     def nuovo_prestito(self, data, id_strumento, cognome_allievo):
@@ -65,7 +65,7 @@ class DepositoStrumenti:
                 strumento_trovato = strumento
 
         if strumento_trovato is None:
-            raise Exception(f"Lo strumento {id_strumento} non è presente nel sistema.")
+            raise Exception(f"Lo strumento {id_strumento} non è presente.")
 
         if not strumento_trovato.disponibile:
             raise Exception(f"Lo strumento {id_strumento} è già in prestito.")
